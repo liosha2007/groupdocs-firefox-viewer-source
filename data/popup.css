@@ -1,0 +1,125 @@
+
+.leftTd {
+    text-align: right;
+}
+
+.rightTd {
+    text-align: left;
+}
+
+.leftTd, .rightTd {
+    padding: 3px;
+    width: 50%;
+}
+
+.authErrorMsg {
+    text-align: center;
+    color: red;
+}
+
+.fileidTd {
+    text-align: left;
+}
+
+.logoutTd {
+    text-align: right;
+}
+
+.tabs {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tab {
+    border-color: gray;
+    border-style: solid;
+    border-width: 1px 1px 0 1px;
+    display: inline-block;
+    padding-left: 2px;
+    width: 100px;
+}
+
+.logoutTd {
+    text-align: right;
+    padding-right: 3px;
+    font-size: 12px;
+}
+
+.fileidTd {
+    text-align: left;
+    padding-left: 3px;
+}
+
+.topTable {
+    margin: 3px;
+}
+
+.fileId {
+    width: 300px;
+}
+
+.listFilesControlTd {
+    width: 150px;
+}
+
+.controlInput {
+    display: block;
+    width: 100%;
+}
+
+.selected {
+    background-color: yellow;
+}
+
+.selected-tab {
+    background-color: gray;
+    color: blue;
+}
+
+.tab, .file, .dir {
+    cursor: pointer;
+}
+
+.dir {
+    list-style-image: url('img/directory.png');
+}
+
+.file {
+    list-style-image: url('img/file.png');
+}
+
+.editable {
+    border: 1px solid gray;
+    cursor: text;
+}
+
+.dirSelectDialog {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid black;
+    background: white;
+}
+
+.dirSelectDialogBtn {
+    width: 50%;
+    height: 25px;
+}
+
+.dirSelectDlgBtnBlock {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.selectDialogTitle {
+    font-size: 14px;
+    padding: 2px;
+}
+
+
+

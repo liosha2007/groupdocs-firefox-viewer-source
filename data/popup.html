@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" media="all" href="popup.css" />
+        <title>GroupDocs Viewer</title>
+    </head>
+    <body>
+        <table align="center" cellspacing="0" cellpadding="0" width="100%" height="100%" id="authTable">
+            <tr>
+                <td valign="middle">
+                    <table width="100%" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="leftTd">
+                                <label for="clientId">Client ID:</label>
+                            </td>
+                            <td class="rightTd">
+                                <input type="text" name="clientId" id="clientId" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="leftTd">
+                                <label for="privateKey">Private Key:</label>
+                            </td>
+                            <td class="rightTd">
+                                <input type="text" name="privateKey" id="privateKey" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="leftTd">
+                                
+                            </td>
+                            <td class="rightTd">
+                                <input type="button" name="authFormBtn" id="authFormBtn" value="Login" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div id="authErrorMsg" class="authErrorMsg" style="display: none;">Please, enter correct values!</div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table align="center" cellspacing="0" cellpadding="0" width="100%" height="100%" id="mainTable" style="display: none;">
+            <tr>
+                <td valign="top">
+                    <table cellspacing="0" cellpadding="0" width="100%" class="topTable">
+                        <tr>
+                            <td class="fileidTd">
+                                <label for="fileId">File ID: </label>
+                                <input type="text" id="fileId" class="fileId" />
+                                <input type="button" value="Go" id="goId" />
+                            </td>
+                            <td class="logoutTd">
+                                <a href="#" id="logout">Logout</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <ul class="tabs">
+                        <li class="tab selected-tab" id="listFilesTab">
+                            List files
+                        </li>
+                        <li class="tab" id="showFileTab">
+                            Show file
+                        </li>
+                        <li class="tab" id="uploadFileTab">
+                            Upload file
+                        </li>
+                    </ul>
+                    
+                    <div id="listFilesBlock">
+                        <table cellspacing="0" cellpadding="0" width="100%" height="100%">
+                            <tr>
+                                <td id="filesTree" class="filesTree">
+                                
+                                </td>
+                                <td class="listFilesControlTd" valign="top">
+                                    <input type="button" value="Show" id="showBtn" class="controlInput" disabled="disabled" />
+                                    <input type="button" value="Download" id="downloadBtn" class="controlInput" disabled="disabled" />
+                                    <input type="button" value="Copy" id="copyBtn" class="controlInput" disabled="disabled" />
+                                    <input type="button" value="Move" id="moveBtn" class="controlInput" disabled="disabled" />
+                                    <input type="button" value="Rename" id="renameBtn" class="controlInput" disabled="disabled" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div id="showFileBlock" style="display: none;">
+                        <iframe src="" frameborder="0" width="610" height="410" id="previewFrame"></iframe>
+                    </div>
+                    
+                    <div id="uploadFileBlock" style="display: none;">
+                        <table cellspacing="0" cellpadding="0" width="100%" height="100%">
+                            <tr>
+                                <td class="leftTd">
+                                    <label for="fileUpload">Select file for upload</label>
+                                </td>
+                                <td class="rightTd">
+                                    <input type="file" id="fileUpload" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="leftTd">
+                                    <label for="uploadPath">Ented path</label>
+                                </td>
+                                <td class="rightTd">
+                                    <input type="text" id="uploadPath" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="leftTd">
+                                    
+                                </td>
+                                <td class="rightTd">
+                                    <input type="button" value="Upload" id="fileUploadBtn" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
