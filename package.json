@@ -1,1 +1,14 @@
-{"license": "", "description": "GroupDocs Viewer", "contributors": [], "author": "GroupDocs", "url": "", "dependencies": ["api-utils", "addon-kit"], "version": "initial.rev417", "lib": "lib", "fullName": "GroupDocsViewer", "main": "main", "id": "jid0-Bs8dUk5k35PM6RhvpMkweikerUU", "name": "groupdocsviewer"}
+{
+	"license" : "",
+	"description" : "GroupDocs Viewer Plugin",
+	"contributors" : [],
+	"author" : "GroupDocs Marketplace Team",
+	"url" : "",
+	"dependencies" : ["api-utils", "addon-kit"],
+	"version" : "1.3",
+	"lib" : "lib",
+	"fullName" : "GroupDocs Viewer",
+	"main" : "main",
+	"id" : "jid0-Bs8dUk5k35PM6RhvpMkweikerUU",
+	"name" : "groupdocsviewer"
+}

@@ -1,7 +1,7 @@
 groupdocs-firefox-viewer-source
 ===============================
 
-Souece code of GroupDocs Viewer Plugin for FireFox
+Source code of GroupDocs Viewer Plugin for FireFox
 
 ###[Sign, Manage, Annotate, Assemble, Compare and Convert Documents with GroupDocs](http://groupdocs.com)
 * [View PDF, Word, Excel, Powerpoint and Images with GroupDocs Viewer](http://groupdocs.com/apps/viewer)
