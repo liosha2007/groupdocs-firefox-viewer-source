@@ -11,8 +11,8 @@ var main_panel = panel.Panel({
         data.url('js/lib.js'),
         data.url("js/popup.js")
     ],
-    width: 640,
-    height: 480
+    width: 680,
+    height: 600
 });
 // Create Plugin button
 var main_widget = widget.Widget({

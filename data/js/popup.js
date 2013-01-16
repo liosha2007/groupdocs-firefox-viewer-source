@@ -1,7 +1,26 @@
+
+// onShow event
+self.port.on("show", function onShow() {
+	LocalStorageManager.initialize();
+	GroupDocsPlugin.initialize();
+});
+
+var LocalStorageManager = {
+	initialize: function (){
+		// Credentials already saved
+		self.port.on('okCredentials', function (credential){
+			GroupDocsPlugin.authSuccess(credential.username, credential.password)
+		});
+		// No credentials
+		self.port.on('noCredentials', function (){
+			
+		});
+	}
+};
+
 // main object
 var GroupDocsPlugin = {
 	filesCount: 0,
-	self: null,
 	initialize: function (){
 		// Initialize plugin
 		this._initializeEvents();
@@ -10,64 +29,52 @@ var GroupDocsPlugin = {
 		// Initialize logout button
 		$('#logout').click(function (){
 			GroupDocsPlugin.onLogout();
-			return false;
 		});
 		// Initialize tab switching
 		$('.tab').each(function (index, elem){
 	        $(elem).click(function (elem){
-	        	GroupDocsPlugin.onTabSwitch((elem.srcElement === undefined) ? elem.target : elem.srcElement);
-				return false;
+	        	GroupDocsPlugin.onTabSwitch(elem.srcElement);
 	        });
 	    });
 		// Initialize auth button
 		$('#authFormBtn').click(function (){
 			GroupDocsPlugin.onAuth();
-			return false;
 		});
 		// Initialize show button
 		$('#showBtn').click(function (){
 			GroupDocsPlugin.onShowDocument();
-			return false;
 		});
 		// Initialize download button
 		$('#downloadBtn').click(function (){
 			GroupDocsPlugin.onDownloadDocument();
-			return false;
 		});
 		// Initialize rename button
 		$('#renameBtn').click(function (){
 			GroupDocsPlugin.onRenameDocument();
-			return false;
 		});
 		// Initialize find button
 		$('#findId').click(function (){
 			GroupDocsPlugin.findDocument();
-			return false;
 		});
 		// Initialize copy button
 		$('#copyBtn').click(function (){
 			GroupDocsPlugin.copyDocument();
-			return false;
 		});
 		// Initialize move buttin
 		$('#moveBtn').click(function (){
 			GroupDocsPlugin.moveDocument();
-			return false;
 		});
 		// Initialize delete button
 		$('#deleteBtn').click(function (){
 			GroupDocsPlugin.deleteDocument();
-			return false;
 		});
 		// Initialize embed button
 		$('#embedBtn').click(function (){
 			GroupDocsPlugin.embedDocument();
-			return false;
 		});
 		// Initialize file upload button
 		$('#fileUploadBtn').click(function (){
 			GroupDocsPlugin.uploadDocument();
-			return false;
 		});
 		// Initialize default text functional
 	    $(".default-text").focus(function(srcc){
@@ -86,12 +93,11 @@ var GroupDocsPlugin = {
 		// Initialize refresh button
 		$('#refreshBtn').click(function (){
 			GroupDocsPlugin.refreshDocumentList();
-			return false;
 		});
 	},
 	onLogout: function (){
 		// Logout function
-		this.self.port.emit('clearCredentials', { 'username' : GroupDocsManager.cid, 'password' : GroupDocsManager.pkey });
+		self.port.emit('clearCredentials', { 'username' : clientId, 'password' : privateKey });
 		GroupDocsManager.cid = '';
 		GroupDocsManager.pkey = '';
 		$('#clientId').val('');
@@ -125,7 +131,6 @@ var GroupDocsPlugin = {
 			$('#authFormBtn').removeAttr('disabled');
 			if (isCorrect === true){
 				if ($('#rememberMe').is(':checked')){
-					this.self.port.emit('saveCredentials', { 'username' : cid, 'password' : pkey });
 					localStorage['groupdocs_cid'] = cid;
 					localStorage['groupdocs_pkey'] = pkey;
 				}
@@ -145,10 +150,8 @@ var GroupDocsPlugin = {
 		this.contentShowed();
 	},
 	contentShowed: function (){
-		if (GroupDocsPlugin.filesCount == 0){
-			$('#filesTree').html('');
-			this.showEntities('', $('#filesTree'));
-		}
+		$('#filesTree').html('');
+		this.showEntities('', $('#filesTree'));
 	},
 	showEntities: function (path, parent){
 		GroupDocsPlugin.filesCount += 1;
@@ -239,7 +242,6 @@ var GroupDocsPlugin = {
 	                    		$(editableDiv).html(oldName);
 	                    		StatusManager.err('listFilesStatus', error_message);
 	                		}
-	                		GroupDocsPlugin.contentShowed();
 	                	});
                 	}
                 	else {
@@ -252,7 +254,7 @@ var GroupDocsPlugin = {
             });
             editableDiv.keydown(function (e){
             	if(e.keyCode == 13) {
-            		$('#fileId').focus();
+            		$(editableDiv).blur();
             	}
             });
         }
@@ -369,22 +371,3 @@ var GroupDocsPlugin = {
 		this.contentShowed();
 	}
 };
-// Message listeners
-GroupDocsPlugin.self = self;
-if (self.port !== undefined){
-	// onShow event
-	self.port.on("show", function onShow() {
-		GroupDocsPlugin.initialize();
-	});
-	// Credentials already saved
-	self.port.on('okCredentials', function (credential){
-		GroupDocsPlugin.authSuccess(credential.username, credential.password)
-	});
-	// No credentials
-	self.port.on('noCredentials', function (){
-		
-	});
-}
-else {
-	console.log('self.port === undefined');
-}
