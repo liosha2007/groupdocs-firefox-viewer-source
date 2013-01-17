@@ -349,16 +349,23 @@ var GroupDocsPlugin = {
 		StatusManager.showProgress();
 		var path = $('#uploadPath').val();
 		path = (path == $('#uploadPath').attr('title')) ? '' : path;
-		path = (path[path.length - 1] == '/' || path[path.length - 1] == '\\') ? path : path + '/';
-		path = (path[0] == '/' || path[0] == '\\') ? path.substr(1) : path;
+		if (path.length > 0){
+			path = (path[path.length - 1] == '/' || path[path.length - 1] == '\\') ? path : path + '/';
+			path = (path[0] == '/' || path[0] == '\\') ? path.substr(1) : path;
+		}
 		var descr = $('#fileDescr').val();
 		descr = (descr == $('#fileDescr').attr('title')) ? '' : descr;
 		StatusManager.inf('uploadFileStatus', 'Start file upload');
+		// Fix file uploading error 'property "prototype" is not an object'
+		File.prototype = File;
 		GroupDocsManager.uploadFile(file, path, descr, function (success, responce, error_message){
 			StatusManager.hideProgress();
     		if (success){
     			GroupDocsPlugin.contentShowed();
     			StatusManager.scs('uploadFileStatus', 'File uploaded');
+    			StatusManager.scs('listFilesStatus', 'File uploaded');
+    			$('#fileUpload').val('');
+    			$('#listFilesTab').click();
     		}
     		else {
     			StatusManager.err('uploadFileStatus', error_message);
@@ -385,6 +392,4 @@ if (self.port !== undefined){
 		
 	});
 }
-else {
-	console.log('self.port === undefined');
-}
+
